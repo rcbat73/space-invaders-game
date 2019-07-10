@@ -14,7 +14,6 @@ class Game extends React.Component {
     super(props);
     this.state = this.iniState(false);     
     this.handleKeyPress = this.handleKeyPress.bind(this);
-	this.handleTouchMove = this.handleTouchMove.bind(this);
     this.animationID = null; 
     this.ended = false;
   }
@@ -38,7 +37,6 @@ class Game extends React.Component {
   
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
-	document.addEventListener("ontouchmove", this.handleTouchMove);
 	
     this.shootSound = Sound.find(laserAudio);
     this.destroySound = Sound.find(explosionAudio);
@@ -77,7 +75,7 @@ class Game extends React.Component {
                 x: cdX,
                 y: cdY,
                 isAlive: true,            
-                speed: 3,
+                speed: cnt.ALIEN_SPEED,
                 vector: [1, 0],
                 pointing: -1,
             });
@@ -114,10 +112,10 @@ class Game extends React.Component {
     let y = event.touches[0].clientY;
     let dX = x - this.state.moveX;
     if ( dX > 0 ) {
-      this.movePlayer(10);
+      this.movePlayer(cnt.PLAYER_SPEED);
     }
     else {
-      this.movePlayer(-10);
+      this.movePlayer(-cnt.PLAYER_SPEED);
     }
     this.setState({ moveX: x });
   }  
