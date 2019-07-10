@@ -65,7 +65,7 @@ class Game extends React.Component {
       }   
       let colPos = index % cnt.ALIEN_IN_COLS;      
       let cdX = cnt.ALIEN_MATRIX_POS + (cnt.ALIEN_WIDTH + cnt.ALIEN_PADDING) * colPos;      
-      let cdY = 40 + newRow * cnt.ALIEN_PADDING;
+      let cdY = 40 + newRow * (cnt.ALIEN_WIDTH + cnt.ALIEN_PADDING);
       aliens.push({
                 id: index,
                 width: cnt.ALIEN_WIDTH,
